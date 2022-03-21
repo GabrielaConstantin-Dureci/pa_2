@@ -24,8 +24,11 @@ read_csv(file = "./data/data.csv")
 ```{r}
 my_data <- read_csv(here("data", "data.csv"))
 ```
+
 ```{r}
-my_data %>%
+my_data%>%
+   separate(info,into = c("id","hold"), sep = 5)%>%
+  mutate(item = str_remove(hold,"[_]"))%>%
  summarize(f0_avg = mean(f0), duration_avg = mean(durationV), int_avg=mean(int))
 ```
 
